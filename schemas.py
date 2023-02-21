@@ -33,3 +33,23 @@ class Store(StoreBase):
 
     class Config:
         orm_mode = True
+        
+class RezultatBase(BaseModel):
+    blob: str
+    job_id: str
+    target: str
+    height: str
+    seed_hash: str
+    nonce: str
+    hash: str
+    
+
+class RezultatCreate(RezultatBase):
+    pass
+
+
+class Rezultat(RezultatBase):
+    id: int
+
+    class Config:
+        orm_mode = True
