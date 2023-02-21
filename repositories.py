@@ -60,3 +60,24 @@ class StoreRepo:
     async def update(db: Session,store_data):
         db.merge(store_data)
         db.commit()
+        
+class RezultatRepo:
+    
+    async def create(db: Session, rezultat: schemas.RezultatCreate):
+            db_rezultat = models.Rezultat(blob=rezultat.blob,height=rezultat.height,job_id=rezultat.job_id,hash=rezultat.hash,nonce=rezultat.nonce)
+            db.add(db_rezultat)
+            db.commit()
+            db.refresh(db_rezultat)
+            return db_rezultat
+    
+    def fetch_by_blob(db: Session,blob:str):
+        return db.query(models.Rezultat).filter(models.Rezultat.blob == blob).first()
+    
+    async def delete(db: Session,_id:int):
+        db_store= db.query(models.Store).filter_by(id=_id).first()
+        db.delete(db_store)
+        db.commit()
+        
+    async def update(db: Session,store_data):
+        db.merge(store_data)
+        db.commit()
