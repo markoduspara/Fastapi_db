@@ -29,9 +29,11 @@ class Rezultat(Base):
     blob = Column(String(300), nullable=False, unique=False,index=True)
     height = Column(String(300), nullable=False, unique=False,index=True)
     job_id = Column(String(10), nullable=False, unique=False)
+    target = Column(String(300), nullable=False, unique=False)
+    seed_hash = Column(String(300), nullable=False, unique=False)
     hash = Column(String(300), nullable=True, unique=False)
     nonce = Column(String(300), nullable=True, unique=False)
     
 
     def __repr__(self):
-        return 'Rezultat(blob=%s, height=%s, job_id=%s, hash=%s, nonce=%s)' % (self.blob,self.height,self.job_id,self.hash,self.nonce)
+        return 'Rezultat(blob=%s, height=%s, job_id=%s, target=%s, seed_hash=%s, hash=%s, nonce=%s)' % (self.blob,self.height,self.job_id,self.target,self.seed_hash,self.hash,self.nonce)
