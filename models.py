@@ -25,11 +25,12 @@ class Store(Base):
     
 class Rezultat(Base):
     __tablename__ = "rezultati"
-    blob = Column(String(300), nullable=False, unique=False)
-    height = Column(String(300), nullable=False, unique=False)
-    job_id = Column(String(10), nullable=False, unique=True)
-    hash = Column(String(300), nullable=False, unique=True)
-    nonce = Column(String(300), nullable=False, unique=True)
+    id = Column(Integer, primary_key=True,index=True)
+    blob = Column(String(300), nullable=False, unique=False,index=True)
+    height = Column(String(300), nullable=False, unique=False,index=True)
+    job_id = Column(String(10), nullable=False, unique=False)
+    hash = Column(String(300), nullable=True, unique=False)
+    nonce = Column(String(300), nullable=True, unique=False)
     
 
     def __repr__(self):
